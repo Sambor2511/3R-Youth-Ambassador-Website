@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="news.css" />
+  <title>3rya news</title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+    rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="/Logo.png">
+</head>
+
+<body>
+  <nav>
+    <div id="imgcontainer">
+      <img src="/Logo.png" alt="Your Logo" width="80px" height="80px" />
+      <p>3R Youth Ambassador</p>
+      <i class="ri-leaf-line"></i>
+    </div>
+    <ul id="navbar">
+      <li>
+      </li>
+    </ul>
+    <!-- <div id="button">
+            </div> -->
+  </nav>
+  <form action="/new/newform">
+    <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+  <h1>New Article</h1>
+  <% article.forEach(article => { %>
+    <div class="card mt-4">
+      <div class="card-body">
+        <h4 class="card-title"><%= article.title %></h4>
+        <div class="card-subtitle text-muted mb-2">
+          <%= article.createdAt.toLocaleDateString() %>
+        </div>
+        <div class="card-text mb-2"><%= article.description %></div>
+        <a href="new/newform/<%= article.id %>" class="btn btn-primary">Read More</a>
+        <!-- <a href="articles/edit/<%= article.id %>" class="btn btn-info">Edit</a> -->
+        <form action="<%= article.id %>?_method=DELETE" method="POST" class="d-inline">
+          <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+      </div>
+    </div>
+  <% }) %>
+</body>
+
+</html>

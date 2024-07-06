@@ -1,0 +1,18 @@
+* {
+    padding: 0;
+    margin: 0;
+  }
+nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+#imgcontainer{
+    display: flex;
+    /* justify-content: space-around; */
+    align-items: center;
+    font-size: 1.5rem;
+}
+#imgcontainer img{
+    margin: 15px;
+}
