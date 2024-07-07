@@ -70,3 +70,24 @@ nav a:hover {
     font-size: 1em;
     word-break:break-all;
 }
+@media (max-width: 590px) {
+    nav{
+        flex-direction: column;
+    }
+    ul{
+        width: 100vw;
+        padding-bottom: 15px;
+        justify-content: space-around;
+
+    }
+    ul li a{
+        padding: 0;
+        margin: 0;
+    }
+    ul li {
+        background-color: #ffffff;
+        padding: 3px;
+        border-radius: 10px;
+        text-align: center;
+    }
+}
