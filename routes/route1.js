@@ -9,30 +9,26 @@ router.get('/new', async (req,res)=>{
     const article = await Article.find()
     res.render('new', {article:article})
 })
-router.get('/new/newform/', (req,res)=>{
-    res.render('newform', {article: new Article()})
+router.get('/new/newform', async (req,res)=>{
+    const article = await Article.find()
+    res.render('newform', {article:article})
 })
-router.get('/new/newform/:id', async (req,res)=>{
+router.get('/new/:id', async (req,res)=>{
     const article = await Article.findById(req.params.id)
     if (article == null) res.redirect('/')
     res.render('show', {article:article})
 })
-router.post('/new/newform/', async (req,res)=>{
+router.post('/new/newform', async (req,res)=>{
     let article = new Article({
         title:req.body.title,
-        description:req.body.description,
-        markdown:req.body.markdown
+        description:req.body.description
     })
-    try{
-        article = await article.save()
-        res.redirect(`/new/newform/${article.id}`)
-    } catch (e) {
-        console.log(e)
-        res.render('new', {article:article})
-    }
+
+    article = await article.save()
+    res.redirect('/new/newform')
 })
 router.delete('/:id', async (req, res) => {
     await Article.findByIdAndDelete(req.params.id)
-    res.redirect('/')
+    res.redirect('/new/newform')
   })
 module.exports = router;

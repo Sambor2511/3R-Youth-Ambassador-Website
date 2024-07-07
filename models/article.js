@@ -5,9 +5,6 @@ const articleSchema = new mongoose.Schema({
         required: true
       },
       description: {
-        type: String
-      },
-      markdown: {
         type: String,
         required: true
       },

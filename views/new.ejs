@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="news.css" />
+  <link rel="stylesheet" href="./news.css" />
   <title>3rya news</title>
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -27,31 +27,41 @@
     </div>
     <ul id="navbar">
       <li>
+        <a href="/">home<i class="ri-home-8-line"></i></a>
+      </li>
+      <li>
+        <a onclick="check()">edit</i></a>
       </li>
     </ul>
     <!-- <div id="button">
             </div> -->
   </nav>
-  <form action="/new/newform">
-    <button type="submit" class="btn btn-primary">Save</button>
-    </form>
-  <h1>New Article</h1>
-  <% article.forEach(article => { %>
-    <div class="card mt-4">
-      <div class="card-body">
-        <h4 class="card-title"><%= article.title %></h4>
-        <div class="card-subtitle text-muted mb-2">
+  <div id="container">
+    <!-- <h1>New Article</h1>
+    <form action="/new/newform">
+      <button type="submit" class="btn">New article</button>
+      </form> -->
+    <% article.forEach(article => { %>
+    <div class="card">
+      <div class="content">
+        <h3 class="content-title"><%= article.title %></h3>
+        <p>
           <%= article.createdAt.toLocaleDateString() %>
-        </div>
-        <div class="card-text mb-2"><%= article.description %></div>
-        <a href="new/newform/<%= article.id %>" class="btn btn-primary">Read More</a>
-        <!-- <a href="articles/edit/<%= article.id %>" class="btn btn-info">Edit</a> -->
-        <form action="<%= article.id %>?_method=DELETE" method="POST" class="d-inline">
-          <button type="submit" class="btn btn-danger">Delete</button>
-        </form>
+        </p>
+        <h3 class="content-title"><%= article.description %></h3>
+        <a href="new/<%= article.id %>" class="btn btn-primary">Read More</a>
       </div>
     </div>
-  <% }) %>
+    <% }) %>
+  </div>
 </body>
+<script>
+  function check(){
+    var ps = prompt("Enter password:");
+    if (ps=="1"){
+      window.location.href="/new/newform"
+    }
+  }
+</script>
 
 </html>

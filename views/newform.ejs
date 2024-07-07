@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="news.css" />
   <title>3rya news</title>
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -15,29 +13,32 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
     rel="stylesheet">
-  <link rel="icon" type="image/x-icon" href="/Logo.png">
 </head>
 
 <body>
-  <nav>
-    <div id="imgcontainer">
-      <img src="/Logo.png" alt="Your Logo" width="80px" height="80px" />
-      <p>3R Youth Ambassador</p>
-      <i class="ri-leaf-line"></i>
-    </div>
-    <ul id="navbar">
-      <li>
-      </li>
-    </ul>
-    <!-- <div id="button">
-            </div> -->
-  </nav>
   <div id="form1">
     <form action="/new/newform" method="POST">
-    <%- include('form_field') %>  
+    <%- include('form_field') %>
     </form>
   </div>
-  <h1>New Article</h1>
-</body>
+  <div>
+    <h1>Article list</h1>
+    <% article.forEach(article => { %>
+      <div class="card">
+        <div class="content">
+          <h3><%= article.title %></h3>
+          <div class="date">
+            <%= article.createdAt.toLocaleDateString() %>
+          </div>
+          <div class="description"><%= article.description %></div>
+          <form action="/<%= article.id %>?_method=DELETE" method="POST">
+            <button>Delete</button>
+            </form>
+          <!-- <a href="articles/edit/<%= article.id %>" class="btn btn-info">Edit</a> -->
+        </div>
+      </div>
+    <% }) %>
+  </div>
 
+</body>
 </html>

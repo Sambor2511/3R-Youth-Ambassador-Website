@@ -11,19 +11,13 @@ mongoose.connect('mongodb+srv://samborsok12345:testing123@cluster0.u5fgd9b.mongo
 
 app.use(express.urlencoded({extended:false}))
 app.set('view engine', "ejs")
-app.use(express.static("public"));
+app.use(express.static(__dirname+"/public"));
 app.use("/", require("./routes/route1.js"))
 // app.use(express.json())
 app.get('/', (req,res)=>{
     const articles = [{title:"test"}]
-    res.render("index",{articles:articles})
+    res.render("index")
 })
-// app.post('/', (req,res)=>{
-//     const articles = [{title:"test"}]
-//     res.render("index",{articles:articles})
-// })
-
-
 app.listen(port,()=>{
     console.log(`Server running on port ${port}`)
-})      
+})  
