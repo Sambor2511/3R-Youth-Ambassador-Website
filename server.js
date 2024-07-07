@@ -7,7 +7,7 @@ const app = express();
 const port = process.env.PORT || 5000;
 app.use(methodoverride('_method'))
 
-mongoose.connect('mongodb+srv://samborsok12345:testing123@cluster0.u5fgd9b.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
+mongoose.connect('mongodb+srv://samborsok12345:testing123@cluster0.u5fgd9b.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0?directConnection=true')
 
 app.use(express.urlencoded({extended:false}))
 app.set('view engine', "ejs")
